@@ -1,5 +1,5 @@
 from PIL import Image
-from encodage1bit import *
+from encodage import *
 
 
 class Encode:
@@ -13,12 +13,7 @@ class Encode:
 
     def edit_last_bit(self, number, bit): #Remplace le dernier bit de <number> par <bit>
         numberBase2 = number_to_binary(number, 8)
-        del numberBase2[7]
-        numberBase2.append(bit)
-        byte = ""
-        for bit in numberBase2:
-            byte += str(bit)
-        return int(byte, 2)
+        return int(numberBase2[:-1] + str(bit), 2)
 
     def save_image(self): #Enregistre l'image
         self.im.save(self.path)
@@ -26,7 +21,7 @@ class Encode:
     def edit_pixels(self, base2List, x = 0, y = 0): #Ecris chaque bit dans <base2List> sur l'image
         tmp = list(self.pixels[x, y])
         for bit in range(len(base2List)):
-            tmp[bit % 3] = self.edit_last_bit(tmp[bit % 3], base2List[bit])
+            tmp[bit % 3] = self.edit_last_bit(tmp[bit % 3], int(base2List[bit]))
 
             if bit % 3 == 2: #Toutes les 3 itérations, insère le pixel, charge le nouveau
                 self.im.putpixel((x, 0), tuple(tmp)) #(n , 0) tuple de coordonnés pour insérer le pixel
@@ -53,14 +48,14 @@ class Decode:
         self.pixels = self.im.load()
         self.width, self.height = self.im.size
 
-    def read_last_bit(self, number): #Lire et renvoie le dernier bit de <number>
+    def read_last_bit(self, number): #Lis et renvoie le dernier bit de <number>
         return  bin(number)[-1]
 
-    def read_pixels(self, lenText, x = 0, y = 0): #Lis le dernier de chaque pixel où l'ont a écrit dessus
+    def read_pixels(self, lenText, x = 0, y = 0): #Lis le dernier bit de chaque pixel où l'ont a écrit dessus
         tmp = list(self.pixels[x, y])
-        bits = []
+        bits = ""
         for bit in range(lenText):
-            bits.append(int(self.read_last_bit(tmp[bit % 3])))
+            bits += str(self.read_last_bit(tmp[bit % 3]))
 
             if bit % 3 == 2:
                 x += 1
@@ -92,7 +87,7 @@ def main(path, message = False, key = False):
 
     else:
         decoding = Decode(path = path)
-        
+
         longueur  = decoding.read_number_of_caracter()
         text = decoding.read_text(longueur)
         if key != False:
@@ -103,7 +98,7 @@ def main(path, message = False, key = False):
         print(text)
 
 
-path, message = "/home/noah/Desktop/StegaNSI/chien.png", "Take... Take... Taking that crown from you"
+path, message, key = "P:\\NSI\\Stega\\chien.png", "Better Days", False
 
-main("/home/noah/Desktop/StegaNSI/chien.png", message = message)
-main("/home/noah/Desktop/StegaNSI/chien.png")
+main(path = path, message = message, key = "Password1")
+main(path = path, message = False, key = "Password1")
