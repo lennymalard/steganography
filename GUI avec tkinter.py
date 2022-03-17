@@ -15,11 +15,14 @@ def unfocus_entrer(event):
     zoneSaisie = entree.get()
     print(zoneSaisie)
     entree.config(state=DISABLED)
+    return zoneSaisie
 
 def unfocus():
     zoneSaisie = entree.get()
     print(zoneSaisie)
     entree.config(state=DISABLED)
+    return zoneSaisie
+
 
 def retry():
     entree.config(state=NORMAL)
