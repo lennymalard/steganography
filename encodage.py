@@ -30,7 +30,6 @@ def binary_to_number(binary):
 
 
 def XOR(bloc, key):
-    #bloc: [0, 1, 0, ...], peut etre ciphertext ou plaintext en binaire
     #key: str normal text
 
     sha = sha256() #On convertit la clef en SHA256
