@@ -38,7 +38,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QPushButton" name="encryptPageButton">
@@ -85,7 +85,7 @@
      <widget class="QLineEdit" name="pswdLineEdit">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>110</x>
         <y>410</y>
         <width>201</width>
         <height>20</height>
@@ -106,7 +106,7 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>410</y>
         <width>91</width>
         <height>21</height>
@@ -122,11 +122,14 @@
       </property>
      </widget>
      <widget class="QDialogButtonBox" name="pswdBtnBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>160</x>
         <y>440</y>
-        <width>151</width>
+        <width>101</width>
         <height>23</height>
        </rect>
       </property>
@@ -149,6 +152,9 @@
       <property name="acceptDrops">
        <bool>true</bool>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border:1.5px solid grey; border-radius: 5px; background-color: rgb(221, 221, 221);</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -157,6 +163,27 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="runEncBtn">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>400</y>
+        <width>161</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>20</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>RUN</string>
       </property>
      </widget>
     </widget>
@@ -192,11 +219,12 @@
     </property>
     <property name="font">
      <font>
+      <family>Segoe UI</family>
       <pointsize>25</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Menu</string>
+     <string>MENU</string>
     </property>
    </widget>
   </widget>
