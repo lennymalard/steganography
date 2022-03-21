@@ -1,7 +1,7 @@
 import sys 
-from PyQt6 import QtWidgets
-from PyQt6.QtCore import Qt
-from PyQt6 import uic
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt
+from PyQt5 import uic
 
 class MyApp(QtWidgets.QMainWindow):
     def __init__(self):
@@ -9,10 +9,23 @@ class MyApp(QtWidgets.QMainWindow):
         uic.loadUi("main.ui", self)
 
         def eraseAll():
-            self.imageLabel.clear()
-            self.imageLabel.is_imported = False
-            self.pswdLineEdit.clear()
-            self.pswdBtnBox.setEnabled(False)
+            self.encImageLabel.clear()
+            self.decImageLabel.clear()
+
+            self.encImageLabel.is_imported = False
+            self.decImageLabel.is_imported = False
+
+            self.encPswdLineEdit.clear()
+            self.decPswdLineEdit.clear()
+
+            self.encPswdBtnBox.setEnabled(False)
+            self.decPswdBtnBox.setEnabled(False)
+
+            self.runEncBtn.setEnabled(False)
+            self.runDecBtn.setEnabled(False)
+
+            self.encImageLabel.setText("ENCRYPT")
+            self.decImageLabel.setText("DECRYPT")
 
         def clickEncryptPageBtn():
             print("opening 'encrypt page'")
@@ -24,21 +37,36 @@ class MyApp(QtWidgets.QMainWindow):
             print("opening 'menu page'")
             eraseAll()
             self.stackedWidget.setCurrentWidget(self.menuPage)
-        def clickPswdOkBtn():
-            print(f"password: {self.pswdLineEdit.text()}")
-        def clickPswdCancelBtn():
-            self.pswdLineEdit.clear()
 
-        def pswdTextChanged():
-            if self.imageLabel.is_imported == True:
-                self.pswdBtnBox.setEnabled(True)
+        def clickEncPswdOkBtn():
+            print(f"password: {self.encPswdLineEdit.text()}")
+            self.runEncBtn.setEnabled(True)
+        def clickEncPswdCancelBtn():
+            self.encPswdLineEdit.clear()
+        def clickDecPswdOkBtn():
+            print(f"password: {self.decPswdLineEdit.text()}")
+            self.runDecBtn.setEnabled(True)
+        def clickDecPswdCancelBtn():
+            self.decPswdLineEdit.clear()
+
+        def encPswdTextChanged():
+            if self.encImageLabel.is_imported == True:
+                self.encPswdBtnBox.setEnabled(True)
+        def decPswdTextChanged():
+            if self.decImageLabel.is_imported == True:
+                self.decPswdBtnBox.setEnabled(True)
 
         self.encryptPageButton.clicked.connect(clickEncryptPageBtn)
         self.decryptPageButton.clicked.connect(clickDecryptPageBtn)
         self.menuPageButton.clicked.connect(clickMenuPageBtn)
-        self.pswdBtnBox.accepted.connect(clickPswdOkBtn)
-        self.pswdBtnBox.rejected.connect(clickPswdCancelBtn)
-        self.pswdLineEdit.textChanged.connect(pswdTextChanged)
+
+        self.encPswdBtnBox.accepted.connect(clickEncPswdOkBtn)
+        self.encPswdBtnBox.rejected.connect(clickEncPswdCancelBtn)
+        self.decPswdBtnBox.accepted.connect(clickDecPswdOkBtn)
+        self.decPswdBtnBox.rejected.connect(clickDecPswdCancelBtn)
+
+        self.encPswdLineEdit.textChanged.connect(encPswdTextChanged)
+        self.decPswdLineEdit.textChanged.connect(decPswdTextChanged)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
@@ -48,6 +76,6 @@ if __name__ == '__main__':
     myApp.show()
 
     try:
-        sys.exit(app.exec())
+        sys.exit(app.exec_())
     except SystemExit:
         print("Closing Application...")

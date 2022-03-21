@@ -38,7 +38,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QPushButton" name="encryptPageButton">
@@ -82,7 +82,7 @@
      <property name="acceptDrops">
       <bool>false</bool>
      </property>
-     <widget class="QLineEdit" name="pswdLineEdit">
+     <widget class="QLineEdit" name="encPswdLineEdit">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -100,7 +100,7 @@
        <bool>false</bool>
       </property>
       <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
+       <enum>QLineEdit::Normal</enum>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -121,7 +121,7 @@
        <string>Mot de passe:</string>
       </property>
      </widget>
-     <widget class="QDialogButtonBox" name="pswdBtnBox">
+     <widget class="QDialogButtonBox" name="encPswdBtnBox">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -137,14 +137,19 @@
        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
       </property>
      </widget>
-     <widget class="imageLabel" name="imageLabel">
+     <widget class="imageLabel" name="encImageLabel">
       <property name="geometry">
        <rect>
-        <x>16</x>
+        <x>10</x>
         <y>10</y>
-        <width>761</width>
+        <width>771</width>
         <height>371</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>56</pointsize>
+       </font>
       </property>
       <property name="contextMenuPolicy">
        <enum>Qt::NoContextMenu</enum>
@@ -153,10 +158,10 @@
        <bool>true</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">border:1.5px solid grey; border-radius: 5px; background-color: rgb(221, 221, 221);</string>
+       <string notr="true">border:1.5px solid grey; border-radius: 5px; background-color: rgb(221, 221, 221); color: rgba(0, 0, 0, 50)</string>
       </property>
       <property name="text">
-       <string/>
+       <string>ENCRYPT</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -166,6 +171,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="runEncBtn">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -188,22 +196,116 @@
      </widget>
     </widget>
     <widget class="QWidget" name="decryptPage">
-     <widget class="QLabel" name="label_2">
+     <widget class="QDialogButtonBox" name="decPswdBtnBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>200</y>
-        <width>271</width>
-        <height>121</height>
+        <x>160</x>
+        <y>440</y>
+        <width>101</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="decPswdLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>410</y>
+        <width>201</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>49</pointsize>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>410</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Page2</string>
+       <string>Mot de passe:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="runDecBtn">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>400</y>
+        <width>161</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>20</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>RUN</string>
+      </property>
+     </widget>
+     <widget class="imageLabel" name="decImageLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>771</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>56</pointsize>
+       </font>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::NoContextMenu</enum>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:1.5px solid grey; border-radius: 5px; background-color: rgb(221, 221, 221); color: rgba(0, 0, 0, 50)</string>
+      </property>
+      <property name="text">
+       <string>DECRYPT</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
