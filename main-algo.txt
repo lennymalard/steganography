@@ -1,0 +1,70 @@
+classe MyApp herité de la classe QMainWindow
+	on importe tous les éléments du fichier "main.ui"
+
+	fonction eraseAll prenant aucun argument
+		on supprime le texte présent dans les widgets (instances) encImageLabel et decImageLabel avec la méthodes clear
+		l'attribut is_imported des widgets (instances) encImageLabel et decImageLabel prend comme valeur Faux
+		on supprime le texte présent dans les widgets (instances) encPswdLineEdit et decPswdLineEdit avec la méthodes clear
+		on désactive les widgets (instances) encPswdBtnBox et decPswdBoxBtn avec la methode setEnabled prenant comme argument Faux
+		on désactive les widgets (instances) runEncBtn et runDecBtn avec la methode setEnabled prenant comme argument Faux
+		on remplace l'élément présent dans les widgets (instances) encImageLabel et decImageLabel avec les methodes setText prenant comme argument respectivement "ENCRYPT" et "DECRYPT"
+	
+	fonction clickEncryptPageBtn prenant aucun argument
+		on affiche "opening 'encrypt page'"
+		on change de page en effectuant la méthode setCurrentWidget, prenant comme argument le widget (instance) encryptPage, sur le widget stackedWidget
+	
+	fonction clickDecryptPageBtn prenant aucun argument
+		on affiche "opening 'decrypt page'"
+		on change de page en effectuant la méthode setCurrentWidget, prenant comme argument le widget (instance) decryptPage, sur le widget stackedWidget
+
+	fonction clickMenuPageBtn
+		on affiche "opening 'menu page'"
+		on change de page en effectuant la méthode setCurrentWidget, prenant comme argument le widget (instance) menuPage, sur le widget stackedWidget
+
+	fonction clickEncPswdOkBtn
+		on affiche le contenue du widget (instance) encPswdLineEdit à l'aide de la methode text
+		on active le widget (instance) runEncBtn à l'aide de la methode setEnabled prenant comme argument Vrai
+
+	fonction clickEncPswdCancelBtn
+		on supprime le texte présent dans le widget (instance) encPswdLineEdit avec la méthodes clear
+
+	fonction clickDecPswdOkBtn
+		on affiche le contenue du widget (instance) decPswdLineEdit à l'aide de la methode text
+		on active le widget (instance) runDecBtn à l'aide de la methode setEnabled prenant comme argument Vrai
+
+	fonction clickDecPswdCancelBtn
+		on supprime le texte présent dans le widget (instance) decPswdLineEdit avec la méthodes clear
+
+	fonction encPswdTextChanged
+		si l'attribut is_imported de la classe (instance) encImageLabel est égal à Vrai
+			on active le widget (instance) encPswdBtnBox avec la methode setEnabled prenant comme argument Vrai
+		fin si
+
+	fonction decPswdTextChanged
+		si l'attribut is_imported de la classe (instance) decImageLabel est égal à Vrai
+			on active le widget (instance) decPswdBtnBox avec la methode setEnabled prenant comme argument Vrai
+		fin si
+		
+	on effectue l'action de click sur le widget (instance) encryptPageButton en utilisant la methode connect, prenant comme argument la fonction clickEncryptPageBtn, à partir de l'attribut clicked
+	on effectue l'action de click sur le widget (instance) decryptPageButton en utilisant la methode connect, prenant comme argument la fonction clickDecryptPageBtn, à partir de l'attribut clicked
+	on effectue l'action de click sur le widget (instance) menuPageButton en utilisant la methode connect, prenant comme argument la fonction clickMenuPageBtn, à partir de l'attribut clicked
+	
+	on effectue l'action de click sur le widget (instance) encPswdBtnBox en utilisant la methode connect, prenant comme argument la fonction clickEncPswdOkBtn, à partir de l'attribut accepted
+	on effectue l'action de click sur le widget (instance) encPswdBtnBox en utilisant la methode connect, prenant comme argument la fonction clickEncPswdCancelBtn, à partir de l'attribut rejected
+	on effectue l'action de click sur le widget (instance) decPswdBtnBox en utilisant la methode connect, prenant comme argument la fonction clickDecPswdOkBtn, à partir de l'attribut accepted
+	on effectue l'action de click sur le widget decPswdBtnBox en utilisant la methode connect, prenant comme argument la fonction clickDecPswdCancelBtn, à partir de l'attribut rejected
+
+	on effectue l'action de click sur le widget (instance) encPswdLineEdit en utilisant la methode connect, prenant comme argument la fonction encPswdTextChanged, à partir de l'attribut textChanged
+	on effectue l'action de click sur le widget (instance) decPswdLineEdit en utilisant la methode connect, prenant comme argument la fonction decPswdTextChanged, à partir de l'attribut textChanged
+
+si le fichier possede '__main__' comme valeur de l'attribut __name__
+	app prend comme valeur une instance de la classe QApplication prenant comme valeur sys.argv
+	on definie une feuille de style au widget (classe) app
+	myApp prend comme valeur une instance de la classe MyApp
+	on lance l'application en effectuant la methode show sur l'instance myApp
+	
+	on regarde 
+		si l'action de fermeture de fenetre à été effectué sur la fenetre de l'application 
+	si ca été le case
+		on affiche "Closing Application..."
+fin si
