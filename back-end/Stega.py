@@ -96,7 +96,7 @@ def main(path, message = False, key = False):
 
         else:
             text = binary_to_text(text)
-        retun text
+        return text
 
 """
 path, message, key = "P:\\NSI\\Stega\\chien.png", "Numerique et Sciences Informatiques", "Password1"
