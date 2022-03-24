@@ -84,7 +84,8 @@ def main(path, message = False, key = False):
         encoding.insert_number_of_caracter()
         encoding.insert_text()
         encoding.save_image()
-
+        
+        return "Le message a bien été encodé"
     else:
         decoding = Decode(path = path)
 
@@ -95,10 +96,11 @@ def main(path, message = False, key = False):
 
         else:
             text = binary_to_text(text)
-        print(text)
+        retun text
 
+"""
+path, message, key = "P:\\NSI\\Stega\\chien.png", "Numerique et Sciences Informatiques", "Password1"
 
-path, message, key = "P:\\NSI\\Stega\\chien.png", "Better Days", False
-
-main(path = path, message = message, key = "Password1")
-main(path = path, message = False, key = "Password1")
+main(path = path, message = message, key = key)
+main(path = path, message = False, key = key)
+"""
