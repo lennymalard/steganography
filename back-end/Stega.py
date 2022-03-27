@@ -15,7 +15,7 @@ class Encode:
         return int(numberBase2[:-1] + str(bit), 2)
 
     def save_image(self): #Enregistre l'image
-        self.im.save(f"{self.path[:-4]}_encoded.png")
+        self.im.save(f"{self.path[:-4]}_encoded.{self.path[-4:]}")
 
     def edit_pixels(self, base2List, x = 0, y = 0): #Ecris chaque bit dans <base2List> sur l'image
         tmp = list(self.pixels[x, y])

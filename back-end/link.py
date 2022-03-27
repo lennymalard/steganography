@@ -1,8 +1,8 @@
-from encodage import *
+from encodage import*
 from Stega import *
 
-def connection_encodage(path, message, key):
+def encoding_link(path, message, key):
     main(path, message = message, key = key)
 
-def connection_decodage(path, message, key):
+def decoding_link(path, message, key):
     return main(path,key=key)
