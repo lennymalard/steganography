@@ -1,7 +1,6 @@
 from PIL import Image
 from encodage import *
 
-
 class Encode:
     def __init__(self, path, message):
         self.path = path #Chemin de l'image
@@ -16,7 +15,7 @@ class Encode:
         return int(numberBase2[:-1] + str(bit), 2)
 
     def save_image(self): #Enregistre l'image
-        self.im.save(self.path)
+        self.im.save(f"{self.path[:-4]}_encoded.png")
 
     def edit_pixels(self, base2List, x = 0, y = 0): #Ecris chaque bit dans <base2List> sur l'image
         tmp = list(self.pixels[x, y])
@@ -87,20 +86,17 @@ def main(path, message = False, key = False):
         
         return "Le message a bien été encodé"
     else:
+        f = open("message.txt", "w")
+
         decoding = Decode(path = path)
 
         longueur  = decoding.read_number_of_caracter()
         text = decoding.read_text(longueur)
         if key != False:
             text = XOR(text, key)
+            f.write(text)
 
         else:
             text = binary_to_text(text)
+            f.write(text)
         return text
-
-"""
-path, message, key = "P:\\NSI\\Stega\\chien.png", "Numerique et Sciences Informatiques", "Password1"
-
-main(path = path, message = message, key = key)
-main(path = path, message = False, key = key)
-"""
