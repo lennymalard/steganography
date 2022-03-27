@@ -50,7 +50,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QPushButton" name="encryptPageButton">
@@ -95,6 +95,9 @@
       <bool>false</bool>
      </property>
      <widget class="QLineEdit" name="encPswdLineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>110</x>
