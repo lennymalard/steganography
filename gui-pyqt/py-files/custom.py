@@ -6,6 +6,7 @@ class imageLabel(QtWidgets.QLabel):
     def __init__(self, *args, **kwargs):
         QtWidgets.QLabel.__init__(self, *args, **kwargs)
         self.is_imported = False
+        self.image_path = ""
 
     def dragEnterEvent(self, event):
             if event.mimeData().hasImage:
@@ -21,9 +22,9 @@ class imageLabel(QtWidgets.QLabel):
 
     def dropEvent(self, event):
         if event.mimeData().hasImage:
-            file_path = event.mimeData().urls()[0].toLocalFile()
-            self.setPixmap(QtGui.QPixmap(file_path).scaled(self.width(),self.height(), Qt.AspectRatioMode.KeepAspectRatio))
-            print(file_path)
+            self.image_path = event.mimeData().urls()[0].toLocalFile()
+            self.setPixmap(QtGui.QPixmap(self.image_path).scaled(self.width(),self.height(), Qt.AspectRatioMode.KeepAspectRatio))
+            print(self.image_path)
             self.is_imported = True
             event.accept()
         else:
