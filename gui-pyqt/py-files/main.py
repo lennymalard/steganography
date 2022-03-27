@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt
 from PyQt5 import uic
 from link import *
 
-class decryptDialog(QtWidgets.QDialog):
+class DecryptDialog(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
         uic.loadUi("decryptDialog.ui", self)
@@ -103,7 +103,7 @@ class MyApp(QtWidgets.QMainWindow):
 
         def clickRunDecBtn():
             self.decMessage = connection_decodage(path=self.decImageLabel.image_path, message=False, key=self.decKey)
-            decDialog = decryptDialog()
+            decDialog = DecryptDialog()
             decDialog.exec_()
 
         self.encryptPageButton.clicked.connect(clickEncryptPageBtn)
