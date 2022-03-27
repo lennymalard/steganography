@@ -74,15 +74,3 @@ classe MyApp herité de la classe QMainWindow
 	on effectue l'action de click sur le widget (instance) decPswdLineEdit en utilisant la methode connect, prenant comme argument la fonction decPswdTextChanged, à partir de l'attribut textChanged
 	
 	on effectue l'action de click sur le widget (instance) encMessLineEdit en utilisant la methode connect, prenant comme argument la fonction encMessTextChanged, à partir de l'attribut textChanged
-
-si le fichier possede '__main__' comme valeur de l'attribut __name__
-	app prend comme valeur une instance de la classe QApplication prenant comme valeur sys.argv
-	on definie une feuille de style au widget (classe) app
-	myApp prend comme valeur une instance de la classe MyApp
-	on lance l'application en effectuant la methode show sur l'instance myApp
-	
-	on regarde 
-		si l'action de fermeture de fenetre à été effectué sur la fenetre de l'application 
-	si ca été le case
-		on affiche "Closing Application..."
-fin si
