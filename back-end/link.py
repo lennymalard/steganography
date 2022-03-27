@@ -1,4 +1,4 @@
-from encodage import*
+from encodage import *
 from Stega import *
 
 def connection_encodage(path, message, key):
